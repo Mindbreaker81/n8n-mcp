@@ -28,11 +28,10 @@ services:
         value: 1
       - key: AUTH_TOKEN
         sync: false  # Must be set in Render dashboard (secret)
-      # Optional: n8n API configuration (uncomment to enable)
-      # - key: N8N_API_URL
-      #   sync: false
-      # - key: N8N_API_KEY
-      #   sync: false
+      - key: N8N_API_URL
+        sync: false  # Must be set in Render dashboard (secret)
+      - key: N8N_API_KEY
+        sync: false  # Must be set in Render dashboard (secret)
     disk:
       name: n8n-mcp-data
       mountPath: /app/data
