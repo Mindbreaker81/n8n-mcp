@@ -1,0 +1,39 @@
+# render.yaml - Render.com Blueprint configuration
+# Deploy: https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: n8n-mcp
+    runtime: docker
+    dockerfilePath: ./Dockerfile.railway
+    region: oregon  # Options: oregon, frankfurt, ohio, singapore
+    plan: free      # Options: free, starter, standard, pro
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: 3000
+      - key: NODE_ENV
+        value: production
+      - key: MCP_MODE
+        value: http
+      - key: USE_FIXED_HTTP
+        value: true
+      - key: LOG_LEVEL
+        value: info
+      - key: HOST
+        value: 0.0.0.0
+      - key: CORS_ORIGIN
+        value: "*"
+      - key: TRUST_PROXY
+        value: 1
+      - key: AUTH_TOKEN
+        sync: false  # Must be set in Render dashboard (secret)
+      # Optional: n8n API configuration (uncomment to enable)
+      # - key: N8N_API_URL
+      #   sync: false
+      # - key: N8N_API_KEY
+      #   sync: false
+    disk:
+      name: n8n-mcp-data
+      mountPath: /app/data
+      sizeGB: 1  # Minimum 1GB on free plan
