@@ -71,7 +71,7 @@ LABEL org.opencontainers.image.source="https://github.com/czlonkowski/n8n-mcp"
 LABEL org.opencontainers.image.description="n8n MCP Server - Integration between n8n workflow automation and Model Context Protocol"
 LABEL org.opencontainers.image.licenses="MIT"
 LABEL org.opencontainers.image.title="n8n-mcp"
-LABEL org.opencontainers.image.version="2.33.0"
+LABEL org.opencontainers.image.version="2.33.1"
 
 # Create non-root user for security
 RUN addgroup -g 1001 -S nodejs && \
